@@ -1,5 +1,6 @@
 package com.team9.istudy.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.zhuangfei.timetable.model.Schedule;
 import com.zhuangfei.timetable.model.ScheduleEnable;
@@ -16,54 +17,60 @@ public class MySubject implements ScheduleEnable {
     public static final String EXTRAS_ID="extras_id";
     public static final String EXTRAS_AD_URL="extras_ad_url";//广告Url
 
-    private int id=0;
-
+    @SerializedName("week")
+    @Expose private String week;
     /**
-     * 课程名
+     * 周几上
      */
-    @SerializedName("classname")
-    private String name;
+    @SerializedName("day")
+    @Expose private int day;
 
-    //无用数据
-    private String time;
+    @SerializedName("id")
+    @Expose private int id=0;
 
-    /**
-     * 教室
-     */
-    @SerializedName("classaddress")
-    private String room;
+    @SerializedName("username")
+    @Expose private String username;
 
     /**
      * 教师
      */
     @SerializedName("teachername")
-    private String teacher;
-
-    /**
-     * 第几周至第几周上
-     */
-    private List<Integer> weekList;
+    @Expose private String teacher;
 
     /**
      * 开始上课的节次
      */
     @SerializedName("jnum")
-    private int start;
+    @Expose private int start;
 
     /**
      * 上课节数
      */
     @SerializedName("cnum")
-    private int step;
+    @Expose private int step;
 
     /**
-     * 周几上
+     * 课程名
      */
-    @SerializedName("day")
-    private int day;
+    @SerializedName("classname")
+    @Expose private String name;
 
+    /**
+     * 教室
+     */
+    @SerializedName("classaddress")
+    @Expose private String room;
+
+    //无用数据
+    private String time;
+
+
+    /**
+     * 第几周至第几周上
+     */
+    private List<Integer> weekList;
     private String term;
-    private String username;
+
 
     public String getUsername() {
         return username;
@@ -81,13 +88,11 @@ public class MySubject implements ScheduleEnable {
         this.week = week;
     }
 
-    @SerializedName("week")
-    private String week;
+
     /**
      *  一个随机数，用于对应课程的颜色
      */
     private int colorRandom = 0;
-
     private String url;
 
     public void setUrl(String url) {

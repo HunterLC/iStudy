@@ -18,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
@@ -59,6 +61,8 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
     private int target = -1;
     private AlertDialog alertDialog;
     private QMUITopBarLayout topbar;
+    public static int CURRENT_SCHEDULE_DAY = 0;
+    public static String CURRENT_SCHEDULE_NAME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +97,8 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
      * 2秒后刷新界面，模拟网络请求
      */
     private void requestData() {
+        if(mySubjects != null)
+            mySubjects = null;
         alertDialog=new AlertDialog.Builder(this)
                 .setMessage("正在获取课表信息...")
                 .setTitle("Tips").create();
@@ -102,60 +108,24 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
             public void run() {
                 try {
                     Thread.sleep(1000);
-                    String getCourseScheduleUrl = "http://192.168.253.1:8080/maven-ssm-web/infoController/getSchedule?username=15520715516";//查询课表api
+                    String getCourseScheduleUrl = "http://192.168.43.212:8080/maven-ssm-web/infoController/getSchedule?username=15520715516";//查询课表api
                     //String getCourseScheduleUrl = "https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=18883892238";
                     String json = "test";
                     HttpUtil.sendOkHttpRequest(getCourseScheduleUrl, json, new Callback() {
                         //链接失败
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            /*e.printStackTrace();
-                            MySubject mySubject = new MySubject();
-                            mySubject.setName("222");
-                            mySubject.setStep(2);
-                            mySubject.setDay(2);
-                            mySubject.setRoom("X1314");
-                            mySubject.setStart(3);
-                            mySubject.setTerm("2017-2018学年秋");
-                            mySubject.setTime(null);
-                            mySubject.setWeekList(getWeekList("1-9"));
-
-                            MySubject mySubject1 = new MySubject();
-                            mySubject1.setName("计算机图形学");
-                            mySubject1.setStep(2);
-                            mySubject1.setDay(3);
-                            mySubject1.setRoom("X1314");
-                            mySubject1.setStart(3);
-                            mySubject1.setTerm("2017-2018学年秋");
-                            mySubject1.setTime(null);
-                            mySubject1.setWeekList(getWeekList("3-10"));
-                            List<MySubject> a = new ArrayList<>();
-                            a.add(mySubject);
-                            a.add(mySubject1);
-
-                            Gson gson = new Gson();
-                            String json=gson.toJson(a);
-                            Log.d("ScheduleActivity",json);
-                            //String responseText = response.body().string();//获得返回的数据
-                            String responseText = json;
-
-                            ScheduleResult scheduleResult = Utility.handleSubjectListResponse(responseText);
-                            Log.d("ScheduleActivity",new Gson().toJson(scheduleResult));
-                            mySubjects = scheduleResult.data;
-                            if(mySubjects==null)
-                                Log.d("ScheduleActivity","空");*/
-
+                            e.printStackTrace();
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     if(alertDialog!=null)
                                         alertDialog.hide();
                                     Toast.makeText(ScheduleActivity.this, "获取课程信息失败,请检查网络连接或者稍后重试", Toast.LENGTH_SHORT).show();
-
                                 }
                             });
-                            mySubjects = SubjectRepertory.loadDefaultSubjects();
-                            handler.sendEmptyMessage(0x123);
+                           // mySubjects = SubjectRepertory.loadDefaultSubjects();
+                           // handler.sendEmptyMessage(0x123);
                         }
 
                         //链接成功
@@ -164,45 +134,8 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
                             //mySubjects = SubjectRepertory.loadDefaultSubjects();
                             //handler.sendEmptyMessage(0x123);
 
-                            /*MySubject mySubject = new MySubject();
-                            mySubject.setName("222");
-                            mySubject.setStep(2);
-                            mySubject.setDay(2);
-                            mySubject.setRoom("X1314");
-                            mySubject.setStart(3);
-                            mySubject.setTerm("2017-2018学年秋");
-                            mySubject.setTime(null);
-                            mySubject.setWeekList(getWeekList("1-9"));
-
-                            MySubject mySubject1 = new MySubject();
-                            mySubject1.setName("计算机图形学");
-                            mySubject1.setStep(2);
-                            mySubject1.setDay(3);
-                            mySubject1.setRoom("X1314");
-                            mySubject1.setStart(3);
-                            mySubject1.setTerm("2017-2018学年秋");
-                            mySubject1.setTime(null);
-                            mySubject1.setWeekList(getWeekList("3-10"));
-                            List<MySubject> a = new ArrayList<>();
-                            a.add(mySubject);
-                            a.add(mySubject1);
-
-                            Gson gson = new Gson();
-                            String json=gson.toJson(a);
-                            Log.d("ScheduleActivity",json);
-                            //String responseText = response.body().string();//获得返回的数据
-                            String responseText = json;
-
-                            MySubject scheduleResult = Utility.handleSubjectResponse(responseText);
-                            Log.d("ScheduleActivity",new Gson().toJson(scheduleResult));
-                            mySubjects.add(scheduleResult);
-                            if(mySubjects==null)
-                                Log.d("ScheduleActivity","空");*/
-
                             String responseText = response.body().string();//获得返回的数据
                             Log.e("ScheduleActivity",responseText);
-                            //String responseText = json;
-
                             ScheduleResult scheduleResult = Utility.handleSubjectListResponse(responseText);
                             Log.d("ScheduleActivity",new Gson().toJson(scheduleResult));
                             mySubjects = scheduleResult.data;
@@ -306,6 +239,8 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
      * 生成不同类型的BottomSheet
      */
     private void showBottomSheetList(final List<Schedule> scheduleList) {
+        CURRENT_SCHEDULE_DAY = scheduleList.get(0).getDay();
+        CURRENT_SCHEDULE_NAME = scheduleList.get(0).getName();
         new QMUIBottomSheet.BottomListSheetBuilder(ScheduleActivity.this)
                 .setTitle("课程信息")
                 .addItem(scheduleList.get(0).getName())
@@ -359,7 +294,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
                 .show();
     }
 
-    private void showScheduleDialog(String itemTitle,String itemContent) {
+    private void showScheduleDialog(final String itemTitle, String itemContent) {
         final QMUIDialog.EditTextDialogBuilder builder = new QMUIDialog.EditTextDialogBuilder(ScheduleActivity.this);
         builder.setTitle(itemTitle)
                 .setPlaceholder(itemContent)
@@ -375,14 +310,79 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
                     public void onClick(QMUIDialog dialog, int index) {
                         CharSequence text = builder.getEditText().getText();
                         if (text != null && text.length() > 0) {
-                            Toast.makeText(ScheduleActivity.this, "数据为: " + text, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(ScheduleActivity.this, "数据为: " + text, Toast.LENGTH_SHORT).show();
+                            for(MySubject item:mySubjects){
+                                if(item.getDay() == CURRENT_SCHEDULE_DAY && item.getName().equals(CURRENT_SCHEDULE_NAME))
+                                    switch (itemTitle){
+                                        case "课程名":
+                                            item.setName(""+text);
+                                            break;
+                                        case "教室地点":
+                                            item.setRoom(""+text);
+                                            break;
+                                        case "教师名称":
+                                            item.setTeacher(""+text);
+                                            break;
+                                        case "星期":
+                                            item.setDay(Integer.valueOf(""+text));
+                                            break;
+                                        case "开始节次":
+                                            item.setStart(Integer.valueOf(""+text));
+                                            break;
+                                        case "持续节次":
+                                            item.setStep(Integer.valueOf(""+text));
+                                            break;
+                                    }
+                            }
                             dialog.dismiss();
+                            updateSchedule();
                         } else {
                             Toast.makeText(ScheduleActivity.this, "请输入数据", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
                 .show();
+    }
+
+    /**
+     * 更新课表信息
+     */
+    public void updateSchedule(){
+        List<ScheduleResult> updateSubjects = new ArrayList<>();
+        for (MySubject item:mySubjects){ //遍历课程信息
+            ScheduleResult scheduleResult = new ScheduleResult();
+            scheduleResult.setDay(""+item.getDay());
+            scheduleResult.setId(""+item.getId());
+            scheduleResult.setName(item.getName());
+            scheduleResult.setRoom(item.getRoom());
+            scheduleResult.setStart(""+item.getStart());
+            scheduleResult.setStep(""+item.getStep());
+            scheduleResult.setTeacher(item.getTeacher());
+            scheduleResult.setUsername(item.getUsername());
+            scheduleResult.setWeek(item.getWeek());
+            updateSubjects.add(scheduleResult);
+        }
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+        String updateScheduleJson = gson.toJson(updateSubjects);
+        Log.e("更新课表信息",updateScheduleJson);
+        String updateCourseScheduleUrl = "http://192.168.43.212:8080/maven-ssm-web/infoController/updateSchedule";//查询课表api
+        HttpUtil.sendJsonOkHttpRequest(updateCourseScheduleUrl, updateScheduleJson, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Toast.makeText(ScheduleActivity.this,"更新失败，请重试...",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        requestData();
+                    }
+                });
+            }
+        });
+
     }
 
     /**
