@@ -62,7 +62,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
     private AlertDialog alertDialog;
     private QMUITopBarLayout topbar;
     public static int CURRENT_SCHEDULE_DAY = 0;
-    public static String CURRENT_SCHEDULE_NAME;
+    public static int CURRENT_SCHEDULE_START = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,7 +240,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
      */
     private void showBottomSheetList(final List<Schedule> scheduleList) {
         CURRENT_SCHEDULE_DAY = scheduleList.get(0).getDay();
-        CURRENT_SCHEDULE_NAME = scheduleList.get(0).getName();
+        CURRENT_SCHEDULE_START = scheduleList.get(0).getStart();
         new QMUIBottomSheet.BottomListSheetBuilder(ScheduleActivity.this)
                 .setTitle("课程信息")
                 .addItem(scheduleList.get(0).getName())
@@ -312,7 +312,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
                         if (text != null && text.length() > 0) {
                             //Toast.makeText(ScheduleActivity.this, "数据为: " + text, Toast.LENGTH_SHORT).show();
                             for(MySubject item:mySubjects){
-                                if(item.getDay() == CURRENT_SCHEDULE_DAY && item.getName().equals(CURRENT_SCHEDULE_NAME))
+                                if(item.getDay() == CURRENT_SCHEDULE_DAY && item.getStart() == CURRENT_SCHEDULE_START)
                                     switch (itemTitle){
                                         case "课程名":
                                             item.setName(""+text);
@@ -325,9 +325,11 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
                                             break;
                                         case "星期":
                                             item.setDay(Integer.valueOf(""+text));
+                                            CURRENT_SCHEDULE_DAY = Integer.valueOf(""+text);
                                             break;
                                         case "开始节次":
                                             item.setStart(Integer.valueOf(""+text));
+                                            CURRENT_SCHEDULE_START = Integer.valueOf(""+text);
                                             break;
                                         case "持续节次":
                                             item.setStep(Integer.valueOf(""+text));
@@ -349,7 +351,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
      */
     public void updateSchedule(){
         List<ScheduleResult> updateSubjects = new ArrayList<>();
-        for (MySubject item:mySubjects){ //遍历课程信息
+        /*for (MySubject item:mySubjects){ //遍历课程信息
             ScheduleResult scheduleResult = new ScheduleResult();
             scheduleResult.setDay(""+item.getDay());
             scheduleResult.setId(""+item.getId());
@@ -361,6 +363,22 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
             scheduleResult.setUsername(item.getUsername());
             scheduleResult.setWeek(item.getWeek());
             updateSubjects.add(scheduleResult);
+        }*/
+        for (MySubject item:mySubjects) { //遍历课程信息
+            if(item.getDay() == CURRENT_SCHEDULE_DAY && item.getStart() == CURRENT_SCHEDULE_START){
+                ScheduleResult scheduleResult = new ScheduleResult();
+                scheduleResult.setDay(""+item.getDay());
+                scheduleResult.setId(""+item.getId());
+                scheduleResult.setName(item.getName());
+                scheduleResult.setRoom(item.getRoom());
+                scheduleResult.setStart(""+item.getStart());
+                scheduleResult.setStep(""+item.getStep());
+                scheduleResult.setTeacher(item.getTeacher());
+                scheduleResult.setUsername(item.getUsername());
+                scheduleResult.setWeek(item.getWeek());
+                updateSubjects.add(scheduleResult);
+                break;
+            }
         }
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
         String updateScheduleJson = gson.toJson(updateSubjects);
