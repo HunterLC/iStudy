@@ -1,6 +1,8 @@
 package com.team9.istudy.Activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.Message;
@@ -12,16 +14,13 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet;
@@ -29,7 +28,6 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.team9.istudy.Gson.ScheduleResult;
 import com.team9.istudy.Model.MySubject;
-import com.team9.istudy.Model.SubjectRepertory;
 import com.team9.istudy.R;
 import com.team9.istudy.Util.HttpUtil;
 import com.team9.istudy.Util.Utility;
@@ -41,14 +39,13 @@ import com.zhuangfei.timetable.model.Schedule;
 import com.zhuangfei.timetable.view.WeekView;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-import static com.team9.istudy.Model.SubjectRepertory.getWeekList;
 
 public class ScheduleActivity extends AppCompatActivity  implements View.OnClickListener{
     //控件
@@ -74,7 +71,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
         layout = (LinearLayout) findViewById(R.id.schedule_layout);
         layout.setOnClickListener(this);
         initTimetableView();
-        requestData();
+//        requestData();
     }
 
     /**
@@ -89,6 +86,8 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
             @Override
             public void onClick(View view) {
                 Toast.makeText(ScheduleActivity.this,"cancel",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ScheduleActivity.this, EnglishCET4Activity.class));
+                finish();
             }
         });
     }
@@ -101,17 +100,40 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
             mySubjects = null;
         alertDialog=new AlertDialog.Builder(this)
                 .setMessage("正在获取课表信息...")
-                .setTitle("Tips").create();
+                .setTitle("Tips")
+                .create();
         alertDialog.show();
+        try {
+            //获取mAlert对象
+            Field mAlert = AlertDialog.class.getDeclaredField("mAlert");
+            mAlert.setAccessible(true);
+            Object mAlertController = mAlert.get(alertDialog);
+
+            //获取mTitleView并设置大小颜色
+            Field mTitle = mAlertController.getClass().getDeclaredField("mTitleView");
+            mTitle.setAccessible(true);
+            TextView mTitleView = (TextView) mTitle.get(mAlertController);
+            mTitleView.setTextSize(210);
+            mTitleView.setTextColor(Color.BLACK);
+
+            //获取mMessageView并设置大小颜色
+            Field mMessage = mAlertController.getClass().getDeclaredField("mMessageView");
+            mMessage.setAccessible(true);
+            TextView mMessageView = (TextView) mMessage.get(mAlertController);
+            mMessageView.setTextColor(Color.BLACK);
+            mMessageView.setTextSize(20);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(1000);
                     String getCourseScheduleUrl = "http://192.168.43.212:8080/maven-ssm-web/infoController/getSchedule?username=15520715516";//查询课表api
-                    //String getCourseScheduleUrl = "https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=18883892238";
-                    String json = "test";
-                    HttpUtil.sendOkHttpRequest(getCourseScheduleUrl, json, new Callback() {
+                    HttpUtil.sendOkHttpRequest(getCourseScheduleUrl,new Callback() {
                         //链接失败
                         @Override
                         public void onFailure(Call call, IOException e) {
@@ -351,19 +373,6 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
      */
     public void updateSchedule(){
         List<ScheduleResult> updateSubjects = new ArrayList<>();
-        /*for (MySubject item:mySubjects){ //遍历课程信息
-            ScheduleResult scheduleResult = new ScheduleResult();
-            scheduleResult.setDay(""+item.getDay());
-            scheduleResult.setId(""+item.getId());
-            scheduleResult.setName(item.getName());
-            scheduleResult.setRoom(item.getRoom());
-            scheduleResult.setStart(""+item.getStart());
-            scheduleResult.setStep(""+item.getStep());
-            scheduleResult.setTeacher(item.getTeacher());
-            scheduleResult.setUsername(item.getUsername());
-            scheduleResult.setWeek(item.getWeek());
-            updateSubjects.add(scheduleResult);
-        }*/
         for (MySubject item:mySubjects) { //遍历课程信息
             if(item.getDay() == CURRENT_SCHEDULE_DAY && item.getStart() == CURRENT_SCHEDULE_START){
                 ScheduleResult scheduleResult = new ScheduleResult();

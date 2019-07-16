@@ -16,13 +16,9 @@ public class HttpUtil {
      * @param address
      * @param callback
      */
-    public static void sendOkHttpRequest(String address,String json,okhttp3.Callback callback){
+    public static void sendOkHttpRequest(String address,okhttp3.Callback callback){
         OkHttpClient client = new OkHttpClient();
-       // RequestBody requestBody = RequestBody.create(JSON,json);
-        //创建请求体
-
         Request request = new Request.Builder().url(address).build();
-        Log.d("URL11111111",request.headers().toString());
         client.newCall(request).enqueue(callback);
     }
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/expand_button"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:foreground="?selectableItemBackground"
+        android:padding="16dp" />
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expandable_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        app:el_duration="300"
+        app:el_expanded="false">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/cardMarginVertical"
+            android:layout_marginLeft="@dimen/cardMarginHorizontal"
+            android:layout_marginRight="@dimen/cardMarginHorizontal"
+            android:layout_marginTop="@dimen/cardMarginVertical"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="false"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            app:contentPadding="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_launcher"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="翻译"/>
+                    <TextView
+                        android:id="@+id/translate_textview_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Content：我是翻译的内容"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_launcher"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="例句"/>
+                    <TextView
+                        android:id="@+id/example_textview_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Content：我是例句的内容"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
+</LinearLayout>
