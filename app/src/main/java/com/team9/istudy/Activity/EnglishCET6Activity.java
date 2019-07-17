@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.team9.istudy.Fragment.EnglishCET4Fragment;
+import com.team9.istudy.Fragment.EnglishCET6Fragment;
 import com.team9.istudy.Model.MyWord;
 import com.team9.istudy.R;
 import com.team9.istudy.Util.HttpUtil;
@@ -36,7 +37,7 @@ public class EnglishCET6Activity extends AppCompatActivity {
     public static List<MyWord> myWordList4 = new ArrayList<>();
     public Toolbar toolbar;
     private AlertDialog alertDialog;
-    List<EnglishCET4Fragment> mFragment = new ArrayList<>();
+    List<EnglishCET6Fragment> mFragment = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +138,7 @@ public class EnglishCET6Activity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            EnglishCET4Fragment fragment = null;
+            EnglishCET6Fragment fragment = null;
             if(mFragment.size() > position){
                 fragment = mFragment.get(position);
                 if( fragment != null)
@@ -145,8 +146,7 @@ public class EnglishCET6Activity extends AppCompatActivity {
             }
             if(mFragment.size() <= position)
                 mFragment.add(null);
-            fragment = EnglishCET4Fragment.newInstance(position);
-            //throw new IllegalStateException("There's no fragment for position " + position);
+            fragment = EnglishCET6Fragment.newInstance(position);
             mFragment.set(position,fragment);
             return fragment;
 

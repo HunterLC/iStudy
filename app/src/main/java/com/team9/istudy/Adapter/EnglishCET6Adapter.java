@@ -11,6 +11,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
 import com.team9.istudy.Gson.EnglishDefinition;
+import com.team9.istudy.Gson.ExampleResult;
 import com.team9.istudy.Model.MyWord;
 import com.team9.istudy.R;
 import com.team9.istudy.Util.HttpUtil;
@@ -34,7 +35,10 @@ public class EnglishCET6Adapter extends RecyclerView.Adapter<EnglishCET6Adapter.
     private int selectedItem = UNSELECTED;
     private int currentPosition;
     private String EnglishTranslation = null ;
+    private String EnglishExample = null ;
     private ViewHolder holder1;
+    private ExampleResult exampleResult;
+    private EnglishDefinition englishDefinition;
     public EnglishCET6Adapter(RecyclerView recyclerView, List<MyWord> myWordList, int position) {
         this.recyclerView = recyclerView;
         this.myWordList = myWordList;
@@ -85,8 +89,8 @@ public class EnglishCET6Adapter extends RecyclerView.Adapter<EnglishCET6Adapter.
             if(currentPosition <4){
                 MyWord myWord = myWordList.get(position);
                 expandButton.setText(myWord.getWordName());  //每个单词
-                translateTextView.setText(myWord.getTranslate());
-                exampleTextView.setText(myWord.getExample());
+                //translateTextView.setText(myWord.getTranslate());
+                //exampleTextView.setText(myWord.getExample());
             }
             else
                 expandButton.setText(position+"");
@@ -96,18 +100,12 @@ public class EnglishCET6Adapter extends RecyclerView.Adapter<EnglishCET6Adapter.
 
         @Override
         public void onClick(View view) {
-
             ViewHolder holder = (ViewHolder) recyclerView.findViewHolderForAdapterPosition(selectedItem);
             holder1 = holder;
             if (holder != null) {
-                //initTranslate(holder);
-                /*try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
-                //handler.sendEmptyMessage(0x123);
-                // holder.translateTextView.setText(EnglishTranslation);
+                initTranslate(holder);
+                handler.sendEmptyMessage(0x123);
+                //holder.translateTextView.setText(EnglishTranslation);
 
                 holder.expandButton.setSelected(false);
                 holder.expandableLayout.collapse();
@@ -121,12 +119,12 @@ public class EnglishCET6Adapter extends RecyclerView.Adapter<EnglishCET6Adapter.
                 expandableLayout.expand();
                 selectedItem = position;
             }
-
-
-
-
         }
 
+        /**
+         * 刷新翻译
+         * @param holder
+         */
         public void initTranslate(ViewHolder holder){
             //刷新单词翻译
             String searchWordURL = "https://api.shanbay.com/api/v1/bdc/search/?word="+holder.expandButton.getText();
@@ -138,18 +136,42 @@ public class EnglishCET6Adapter extends RecyclerView.Adapter<EnglishCET6Adapter.
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String responseText = response.body().string();//获得返回的数据
-                    EnglishDefinition englishDefinition = Utility.handleEnglishDefinitionResponse(responseText);
+                    englishDefinition = Utility.handleEnglishDefinitionResponse(responseText);
                     EnglishTranslation = englishDefinition.more.definition;
+                    initExample(holder1);
                 }
             });
 
+        }
+
+        /**
+         * 刷新例句
+         * @param holder
+         */
+        public void initExample(ViewHolder holder){
+            //刷新例句
+            String searchWordURL = "https://api.shanbay.com/api/v1/bdc/example/?vocabulary_id="+englishDefinition.more.id;
+            HttpUtil.sendOkHttpRequest(searchWordURL, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responseText = response.body().string();//获得返回的数据
+                    exampleResult = Utility.handleEnglishExampleResponse(responseText);
+                    EnglishExample = exampleResult.exampleDataList.get(0).annotation+"\n"+exampleResult.exampleDataList.get(0).translation;
+                    EnglishExample = EnglishExample.replaceAll("<vocab>","");
+                    EnglishExample = EnglishExample.replaceAll("</vocab>","");
+                }
+            });
         }
         Handler handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 holder1.translateTextView.setText(EnglishTranslation);
-
+                holder1.exampleTextView.setText(EnglishExample);
             }
         };
 

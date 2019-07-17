@@ -35,7 +35,7 @@ public class EnglishCET6Fragment extends Fragment {
 
     private static String MARK = "mark";// 设置标记
     private static String CURRENT_POSITION = "position" ;// 设置标记
-    public static EnglishCET4Fragment newInstance(int position)
+    public static EnglishCET6Fragment newInstance(int position)
     {
         //将fragment绑定参数
         Bundle bundle = new Bundle();
@@ -54,7 +54,7 @@ public class EnglishCET6Fragment extends Fragment {
                 break;
         }
         bundle.putInt(CURRENT_POSITION,position);
-        EnglishCET4Fragment fragment = new EnglishCET4Fragment();
+        EnglishCET6Fragment fragment = new EnglishCET6Fragment();
         fragment.setArguments(bundle);
         return fragment;
     }
