@@ -1,6 +1,8 @@
 package com.team9.istudy.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -108,7 +110,9 @@ public class Frag_allsub extends Fragment {
                 .create();
         alertDialog.show();
         String jingpinURL="http://192.168.43.212:8080/maven-ssm-web/personController//getVideo";//推荐课程
-        String uname= LoginActivity.username;
+        SharedPreferences loginSP = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        //String uname= LoginActivity.username;
+        String uname= loginSP.getString("account",null);
         HttpUtil.sendOkHttpRequest(jingpinURL, uname ,new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

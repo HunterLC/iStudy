@@ -50,9 +50,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme_CUI);
         setContentView(R.layout.activity_login);
-
         initView();
         setListener();
+        SharedPreferences loginSP = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        if(loginSP.getString("account",null)!=null && loginSP.getString("password",null)!=null){
+            startActivity(new Intent(LoginActivity.this,stu_main.class));
+            finish();
+        }
     }
 
     private void initView() {
@@ -131,9 +135,13 @@ public class LoginActivity extends AppCompatActivity {
                         if(response.isSuccessful()){  //服务器应答成功
                             try {
                                 if(response.body().string().equals("ok")){
+                                    SharedPreferences loginSP = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);  //保存登录信息，只能被本应用所访问
+                                    loginSP.edit()              //记住密码自动登录
+                                            .putString("account",username)
+                                            .putString("password",password)
+                                            .apply();
                                     Explode explode = new Explode();
                                     explode.setDuration(500);
-
                                     getWindow().setExitTransition(explode);
                                     getWindow().setEnterTransition(explode);
                                     ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(LoginActivity.this);
