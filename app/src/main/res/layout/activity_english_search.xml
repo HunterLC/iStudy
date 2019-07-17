@@ -83,7 +83,8 @@
                         android:layout_height="wrap_content"
                         android:text="四级词汇"
                         android:background="@drawable/selector_btn_bg"
-                        android:textColor="@color/app_white"/>
+                        android:textColor="@color/app_white"
+                        android:layout_weight="5"/>
 
                         <Button
                             android:id="@+id/english_search_CET6"
@@ -91,7 +92,8 @@
                             android:layout_height="wrap_content"
                             android:text="六级词汇"
                             android:background="@drawable/selector_btn_bg"
-                            android:textColor="@color/app_white"/>
+                            android:textColor="@color/app_white"
+                            android:layout_weight="5"/>
                     </LinearLayout>
 
                 </LinearLayout>

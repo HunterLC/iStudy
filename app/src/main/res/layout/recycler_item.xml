@@ -12,13 +12,21 @@
         android:layout_height="wrap_content"
         android:elevation="6dp"
         android:foreground="?selectableItemBackground"
-        android:padding="16dp" />
+        android:padding="10dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/app_gray4"/>
 
     <net.cachapa.expandablelayout.ExpandableLayout
         android:id="@+id/expandable_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/selector_beauty"
         app:el_duration="300"
         app:el_expanded="false">
 
@@ -48,16 +56,28 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_launcher"/>
-                    <TextView
+                        android:background="@drawable/ic_translate"
+                        android:layout_margin="10dp"/>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="翻译"/>
-                    <TextView
-                        android:id="@+id/translate_textview_content"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Content：我是翻译的内容"/>
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="翻译"
+                            android:textColor="@color/qmui_config_color_red"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:id="@+id/translate_textview_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Content：我是翻译的内容"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -69,16 +89,28 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_launcher"/>
-                    <TextView
+                        android:background="@drawable/ic_example"
+                        android:layout_margin="10dp"/>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="例句"/>
-                    <TextView
-                        android:id="@+id/example_textview_content"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Content：我是例句的内容"/>
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/qmui_config_color_red"
+                            android:text="例句"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:id="@+id/example_textview_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Content：我是例句的内容"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+
 
                 </LinearLayout>
             </LinearLayout>

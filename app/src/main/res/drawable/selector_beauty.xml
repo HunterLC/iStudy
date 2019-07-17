@@ -4,11 +4,11 @@
 
     <!-- 圆角设置 -->
     <corners
-        android:radius="6dip"
-        android:topLeftRadius="6dp"
-        android:topRightRadius="6dp"
-        android:bottomLeftRadius="6dp"
-        android:bottomRightRadius="6dp"/>
+        android:radius="26dip"
+        android:topLeftRadius="26dp"
+        android:topRightRadius="26dp"
+        android:bottomLeftRadius="26dp"
+        android:bottomRightRadius="26dp"/>
     <!-- 边框宽度及颜色 -->
     <stroke android:width="2px" android:color="@color/btn_filled_blue_bg_pressed" />
 
@@ -47,20 +47,20 @@
     android:centerColor="#2E8B57"/>：设置中间颜色
     -->
     <gradient
-        android:startColor="#12B1B1"
-        android:type="radial"
-        android:endColor="#00B3AEAE"
-        android:gradientRadius="300%p"
-        android:centerColor="#11DA83"/>
+        android:startColor="#1227B1"
+    android:type="radial"
+    android:endColor="#00B3AEAE"
+    android:gradientRadius="300%p"
+    android:centerColor="#11DA83"/>
     <!-- 描边
      <stroke android:width="10dp"：描笔的高度(不是宽度)
     android:color="#ff00ff"：描笔的颜色
     android:dashWidth="20dp"：描笔的宽度
     android:dashGap="10dp"/>：相邻描笔之间的间隔
      -->
-    <stroke android:width="2dp"
-        android:color="@color/qmui_config_color_blue"
-        android:dashWidth="10dp"
-        android:dashGap="2dp"/>
+    <stroke android:width="5dp"
+    android:color="@color/qmui_config_color_blue"
+    android:dashWidth="10dp"
+    android:dashGap="10dp"/>
 
 </shape>
