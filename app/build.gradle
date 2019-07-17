@@ -43,4 +43,6 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:support-core-ui:27.1.1'
     implementation 'net.cachapa.expandablelayout:expandablelayout:[2.9.2]'
+
+    implementation 'com.squareup.okio:okio:1.7.0'
 }

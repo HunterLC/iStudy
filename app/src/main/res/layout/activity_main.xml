@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.stu_main">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+
+        >
+
+        <android.support.v4.view.ViewPager
+
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="684dp">
+
+        </android.support.v4.view.ViewPager>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+
+            <RadioGroup
+                android:id="@+id/mybutton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+
+                >
+
+                <RadioButton
+                    android:id="@+id/stu_main_main"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableTop="@drawable/mysub_select"
+                    android:gravity="center"
+                    android:text="首页"
+                    android:textColor="@color/color_select"
+
+                    />
+
+                <RadioButton
+                    android:id="@+id/stu_main_allsub"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/allsub_select"
+                    android:gravity="center"
+                    android:text="全部课程"
+                    android:textColor="@color/color_select"
+
+                    />
+
+                <RadioButton
+                    android:id="@+id/stu_main_mycsub"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/mysub_select"
+                    android:gravity="center"
+                    android:text="我的课程"
+                    android:textColor="@color/color_select"
+
+                    />
+
+                <RadioButton
+                    android:id="@+id/stu_main_account"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:button="@null"
+                    android:drawableTop="@drawable/account_select"
+                    android:gravity="center"
+                    android:text="账户"
+                    android:textColor="@color/color_select"
+
+                    />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

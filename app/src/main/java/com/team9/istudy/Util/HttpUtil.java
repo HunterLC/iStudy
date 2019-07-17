@@ -29,4 +29,16 @@ public class HttpUtil {
         Log.d("URL11111111",request.headers().toString());
         client.newCall(request).enqueue(callback);
     }
+
+    public static void sendOKHttpRequest1(String address,String username,okhttp3.Callback callback){
+        OkHttpClient client=new OkHttpClient();
+        RequestBody requestBody=new FormBody.Builder()
+                .add("username",username)
+                .build();
+        Request request=new Request.Builder()
+                .url(address)
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
 }

@@ -154,6 +154,13 @@ public class EnglishSearchActivity extends AppCompatActivity {
     public void initComponent(){
         //获得控件对象
         toolbar = (Toolbar)findViewById(R.id.english_search_toolbar);
+        toolbar.setNavigationIcon(R.drawable.qmui_icon_topbar_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         collapsingToolbar = (CollapsingToolbarLayout)findViewById(R.id.english_search_collapsing_toolbar);
         roomImageView = (ImageView)findViewById(R.id.english_search_image_view);
 
@@ -165,11 +172,11 @@ public class EnglishSearchActivity extends AppCompatActivity {
                 doSearchWord();
             }
         });
-        setSupportActionBar(toolbar);
+        /*setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        }*/
         collapsingToolbar.setTitle("英语");
         // Glide.with(this).load("http://192.168.43.212:8080/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/webapps/maven-ssm-web/avatar/head1.jpg").into(roomImageView);
         Glide.with(this).load("http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_51.jpg").into(roomImageView);

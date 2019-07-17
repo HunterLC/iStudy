@@ -71,7 +71,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
         layout = (LinearLayout) findViewById(R.id.schedule_layout);
         layout.setOnClickListener(this);
         initTimetableView();
-//        requestData();
+        requestData();
     }
 
     /**
@@ -86,7 +86,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
             @Override
             public void onClick(View view) {
                 Toast.makeText(ScheduleActivity.this,"cancel",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ScheduleActivity.this, EnglishSearchActivity.class));
+                startActivity(new Intent(ScheduleActivity.this, stu_main.class));
                 finish();
             }
         });

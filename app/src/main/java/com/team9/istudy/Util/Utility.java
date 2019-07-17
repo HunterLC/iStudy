@@ -6,9 +6,11 @@ import com.google.gson.Gson;
 import com.team9.istudy.Gson.EnglishDefinition;
 import com.team9.istudy.Gson.EnglishResult;
 import com.team9.istudy.Gson.ExampleResult;
+import com.team9.istudy.Gson.NoticeResult;
 import com.team9.istudy.Gson.ScheduleResult;
 import com.team9.istudy.Model.MySubject;
 import com.team9.istudy.Model.MyWord;
+import com.team9.istudy.Model.Notice;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -104,4 +106,22 @@ public class Utility {
         }
         return null;
     }
+
+    public static NoticeResult handleMoticeListResponse(String response){
+        try{
+            JSONArray jsonArray = new JSONArray(response);
+            NoticeResult scheduleResult = new NoticeResult();
+            for(int i =0; i < jsonArray.length();i++){
+                String content = jsonArray.getJSONObject(i).toString();
+                Log.d("json值为=",content);
+                Notice temp = new Gson().fromJson(content, Notice.class);
+                scheduleResult.data.add(temp);
+            }
+            return scheduleResult;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

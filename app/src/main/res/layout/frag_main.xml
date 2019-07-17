@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="350dp"
+            android:layout_height="120dp">
+        </android.support.v4.view.ViewPager>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F2F2F2"
+            android:layout_marginTop="15dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal">
+
+
+            <ImageButton
+                android:id="@+id/stu_main_image_resource"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="@android:color/white"
+                android:src="@drawable/index_zy" />
+
+            <ImageButton
+                android:id="@+id/stu_main_image_sublist"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="@android:color/white"
+                android:src="@drawable/index_kb" />
+
+
+            <ImageButton
+                android:id="@+id/stu_main_image_sign"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="@android:color/white"
+                android:src="@drawable/index_qd" />
+
+            <ImageButton
+                android:id="@+id/stu_main_image_english"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="@android:color/white"
+                android:src="@drawable/index_46j" />
+
+            <ImageButton
+                android:id="@+id/stu_main_image_more"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
+                android:background="@android:color/white"
+                android:src="@drawable/index_gd" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="20dp"
+            android:gravity="center_horizontal"
+            >
+
+            <Button
+                android:id="@+id/stu_main_resource"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:background="@android:color/white"
+                android:text="资源" />
+
+            <Button
+                android:id="@+id/stu_main_sublist"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:background="@android:color/white"
+                android:text="课表" />
+
+            <Button
+                android:id="@+id/stu_main_sign"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:background="@android:color/white"
+                android:text="签到" />
+
+            <Button
+                android:id="@+id/stu_main_english"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:background="@android:color/white"
+                android:text="英语" />
+
+            <Button
+                android:id="@+id/stu_main_more"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:background="@android:color/white"
+                android:text="更多" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/noticelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</LinearLayout>

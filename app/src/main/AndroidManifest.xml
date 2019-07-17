@@ -15,10 +15,13 @@
         android:theme="@style/MyAppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.EnglishCET6Activity"></activity>
-        <activity android:name=".Activity.EnglishSearchActivity"></activity>
-        <activity android:name=".Activity.EnglishCET4Activity" />
         <activity android:name=".Activity.ScheduleActivity">
+        </activity>
+        <activity android:name=".Activity.EnglishCET6Activity" />
+        <activity android:name=".Activity.EnglishSearchActivity" />
+        <activity android:name=".Activity.EnglishCET4Activity" />
+        <activity android:name=".Activity.stu_main"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
