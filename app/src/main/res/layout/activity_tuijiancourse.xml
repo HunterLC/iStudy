@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:background="@color/deepskyblue"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/rtn"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/rtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:clickable="true"/>
+        <TextView
+            android:id="@+id/recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_toEndOf="@id/rtn"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="推荐课程"
+            />
+        <ImageView
+            android:id="@+id/update"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/refresh"
+            android:layout_marginLeft="200dp"
+            android:clickable="true"
+            />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/courselist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+</LinearLayout>
