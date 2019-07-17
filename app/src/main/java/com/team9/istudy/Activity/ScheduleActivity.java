@@ -86,7 +86,7 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
             @Override
             public void onClick(View view) {
                 Toast.makeText(ScheduleActivity.this,"cancel",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ScheduleActivity.this, EnglishCET4Activity.class));
+                startActivity(new Intent(ScheduleActivity.this, EnglishSearchActivity.class));
                 finish();
             }
         });

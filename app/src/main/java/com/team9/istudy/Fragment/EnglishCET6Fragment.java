@@ -11,14 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.team9.istudy.Activity.EnglishCET4Activity;
+import com.team9.istudy.Activity.EnglishCET6Activity;
 import com.team9.istudy.Adapter.EnglishCET4Adapter;
+import com.team9.istudy.Adapter.EnglishCET6Adapter;
 import com.team9.istudy.Model.MyWord;
 import com.team9.istudy.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnglishCET4Fragment extends Fragment {
+public class EnglishCET6Fragment extends Fragment {
 
     private List<MyWord> wordList = new ArrayList<>(); //单词信息集合
     private int currentPosition;
@@ -69,20 +71,20 @@ public class EnglishCET4Fragment extends Fragment {
             currentPosition = bundle.getInt(CURRENT_POSITION);
             switch (currentPosition){
                 case 0:
-                    wordList.addAll(EnglishCET4Activity.myWordList1); //得到数据
+                    wordList.addAll(EnglishCET6Activity.myWordList1); //得到数据
                     break;
                 case 1:
-                    wordList.addAll(EnglishCET4Activity.myWordList2);//得到数据
+                    wordList.addAll(EnglishCET6Activity.myWordList2);//得到数据
                     break;
                 case 2:
-                    wordList.addAll(EnglishCET4Activity.myWordList3);//得到数据
+                    wordList.addAll(EnglishCET6Activity.myWordList3);//得到数据
                     break;
                 case 3:
-                    wordList.addAll(EnglishCET4Activity.myWordList4);//得到数据
+                    wordList.addAll(EnglishCET6Activity.myWordList4);//得到数据
                     break;
             }
         }
-        recyclerView.setAdapter(new EnglishCET4Adapter(recyclerView,wordList,currentPosition));
+        recyclerView.setAdapter(new EnglishCET6Adapter(recyclerView,wordList,currentPosition));
         recyclerView.getAdapter().notifyDataSetChanged();
 
         return rootView;

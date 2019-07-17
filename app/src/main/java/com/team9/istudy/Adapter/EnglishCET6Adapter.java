@@ -26,7 +26,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class EnglishCET4Adapter extends RecyclerView.Adapter<EnglishCET4Adapter.ViewHolder> {
+public class EnglishCET6Adapter extends RecyclerView.Adapter<EnglishCET6Adapter.ViewHolder> {
     private static final int UNSELECTED = -1;
 
     private RecyclerView recyclerView;
@@ -35,7 +35,7 @@ public class EnglishCET4Adapter extends RecyclerView.Adapter<EnglishCET4Adapter.
     private int currentPosition;
     private String EnglishTranslation = null ;
     private ViewHolder holder1;
-    public EnglishCET4Adapter(RecyclerView recyclerView, List<MyWord> myWordList, int position) {
+    public EnglishCET6Adapter(RecyclerView recyclerView, List<MyWord> myWordList, int position) {
         this.recyclerView = recyclerView;
         this.myWordList = myWordList;
         this.currentPosition = position;
@@ -86,7 +86,7 @@ public class EnglishCET4Adapter extends RecyclerView.Adapter<EnglishCET4Adapter.
                 MyWord myWord = myWordList.get(position);
                 expandButton.setText(myWord.getWordName());  //每个单词
                 translateTextView.setText(myWord.getTranslate());
-               exampleTextView.setText(myWord.getExample());
+                exampleTextView.setText(myWord.getExample());
             }
             else
                 expandButton.setText(position+"");
@@ -107,7 +107,7 @@ public class EnglishCET4Adapter extends RecyclerView.Adapter<EnglishCET4Adapter.
                     e.printStackTrace();
                 }*/
                 //handler.sendEmptyMessage(0x123);
-               // holder.translateTextView.setText(EnglishTranslation);
+                // holder.translateTextView.setText(EnglishTranslation);
 
                 holder.expandButton.setSelected(false);
                 holder.expandableLayout.collapse();

@@ -7,21 +7,21 @@
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/english_cet4_appbar"
+        android:id="@+id/english_cet6_appbar"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/english_cet4_toolbar"
+            android:id="@+id/english_cet6_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/english_cet4_tab_layout"
+            android:id="@+id/english_cet6_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/colorPrimary"
@@ -34,7 +34,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/english_cet4_view_pager"
+        android:id="@+id/english_cet6_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

@@ -48,6 +48,28 @@ public class EnglishResult {
     @SerializedName("english")
     private String wordName; //单词名
 
+    public String getTranslate() {
+        return translate;
+    }
+
+    public void setTranslate(String translate) {
+        this.translate = translate;
+    }
+
+    public String getExample() {
+        return example;
+    }
+
+    public void setExample(String example) {
+        this.example = example;
+    }
+
+    @SerializedName("translate")
+    private String translate; //单词翻译
+
+    @SerializedName("example")
+    private String example;  //单词例句
+
     public List<MyWord> myWordList;
 
     public EnglishResult(){

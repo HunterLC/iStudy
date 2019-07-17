@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.team9.istudy.Gson.EnglishDefinition;
 import com.team9.istudy.Gson.EnglishResult;
+import com.team9.istudy.Gson.ExampleResult;
 import com.team9.istudy.Gson.ScheduleResult;
 import com.team9.istudy.Model.MySubject;
 import com.team9.istudy.Model.MyWord;
@@ -86,6 +87,18 @@ public class Utility {
             JSONObject jsonObject = new JSONObject(response);
             String content = jsonObject.toString();
             return new Gson().fromJson(content,EnglishDefinition.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ExampleResult handleEnglishExampleResponse(String response){
+        try{
+            Log.e("EnglishActivity",response);
+            JSONObject jsonObject = new JSONObject(response);
+            String content = jsonObject.toString();
+            return new Gson().fromJson(content,ExampleResult.class);
         }catch (Exception e){
             e.printStackTrace();
         }

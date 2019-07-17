@@ -15,7 +15,10 @@ public class MyWord implements Serializable {
     @SerializedName("english")
     private String wordName; //单词名
 
+    @SerializedName("translate")
     private String translate; //单词翻译
+
+    @SerializedName("example")
     private String example;  //单词例句
 
 
@@ -64,6 +67,5 @@ public class MyWord implements Serializable {
     public void setExample(String example) {
         this.example = example;
     }
-
 
 }

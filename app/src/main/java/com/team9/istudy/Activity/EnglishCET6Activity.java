@@ -28,7 +28,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class EnglishCET4Activity extends AppCompatActivity {
+public class EnglishCET6Activity extends AppCompatActivity {
     private static final String[] TAB_TITLES = {"高频", "中频", "低频", "零频"};
     public static List<MyWord> myWordList1 = new ArrayList<>();
     public static List<MyWord> myWordList2 = new ArrayList<>();
@@ -40,10 +40,10 @@ public class EnglishCET4Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_english_cet4);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.english_cet4_view_pager);
+        setContentView(R.layout.activity_english_cet6);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.english_cet6_view_pager);
         viewPager.setAdapter(new simpleAdapter(getSupportFragmentManager()));
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.english_cet4_tab_layout);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.english_cet6_tab_layout);
         tabLayout.setupWithViewPager(viewPager);
         initData();
         initToolBar();
@@ -59,7 +59,7 @@ public class EnglishCET4Activity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String getEnglishListURL = "http://192.168.43.212:8080/maven-ssm-web/infoController/getCET4";
+                String getEnglishListURL = "http://192.168.43.212:8080/maven-ssm-web/infoController/getCET6";
                 HttpUtil.sendOkHttpRequest(getEnglishListURL, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -68,7 +68,7 @@ public class EnglishCET4Activity extends AppCompatActivity {
                             public void run() {
                                 if(alertDialog!=null)
                                     alertDialog.hide();
-                                Toast.makeText(EnglishCET4Activity.this,"服务器开小差了，稍后再试试？",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EnglishCET6Activity.this,"服务器开小差了，稍后再试试？",Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -114,8 +114,8 @@ public class EnglishCET4Activity extends AppCompatActivity {
      * 初始化状态栏
      */
     public void initToolBar(){
-        toolbar = (Toolbar)findViewById(R.id.english_cet4_toolbar);
-        toolbar.setTitle("四级词汇");
+        toolbar = (Toolbar)findViewById(R.id.english_cet6_toolbar);
+        toolbar.setTitle("六级词汇");
         toolbar.setNavigationIcon(R.drawable.qmui_icon_topbar_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

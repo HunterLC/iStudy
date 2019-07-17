@@ -15,9 +15,8 @@
         android:theme="@style/MyAppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.EnglishSearchActivity">
-
-        </activity>
+        <activity android:name=".Activity.EnglishCET6Activity"></activity>
+        <activity android:name=".Activity.EnglishSearchActivity"></activity>
         <activity android:name=".Activity.EnglishCET4Activity" />
         <activity android:name=".Activity.ScheduleActivity">
             <intent-filter>
