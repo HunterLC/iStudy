@@ -1,13 +1,480 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:scrollbars="none"
     android:layout_height="match_parent">
 
-    <TextView
+    <!--总布局-->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="账户"
-        android:textSize="100dp"
-        android:gravity="center" />
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
-</LinearLayout>
+
+        <!--头像模块-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/account_bg_user"
+            android:id="@+id/aim_layout_head"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.team9.istudy.CustomControl.RoundImageView
+                android:layout_width="match_parent"
+                android:id="@+id/aim_head_ima"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/user1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/aim_tv_nickname"
+                android:text= "新学生"
+                android:textColor="#000000"
+                android:textSize="28dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/aim_tv_slogan"
+                android:layout_height="wrap_content"
+                android:text= "邹文材哈哈哈哈哈！"
+                android:textColor="#000000"
+                android:textSize="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.team9.istudy.CustomControl.WaveView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/waveview"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--信息模块-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--关注模块-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/aim_tv_followNum"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="30dp"
+                    android:textColor="#E49352"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/aim_eye" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关注" />
+                </LinearLayout>
+            </LinearLayout>
+            <!--分割线-->
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="1dp"
+                    android:layout_height="55dp"
+                    android:background="#E4E4E4">
+                </View>
+            </LinearLayout>
+            <!--收藏模块-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/aim_tv_collectionNum"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="30dp"
+                    android:textColor="#117EF3"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/aim_collection" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收藏" />
+                </LinearLayout>
+            </LinearLayout>
+            <!--分割线-->
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                >
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="1dp"
+                    android:layout_height="55dp"
+                    android:background="#E4E4E4">
+                </View>
+            </LinearLayout>
+            <!--关注模块-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/aim_tv_discussionNum"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="30dp"
+                    android:textColor="#36B254"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/aim_discussion" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="讨论" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--阴影-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.team9.istudy.CustomControl.CustomShadowView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_centerHorizontal="true" />
+
+            <View
+                android:layout_marginTop="20dp"
+                android:layout_width="420dp"
+                android:layout_height="4px"
+                android:background="#E4E4E4"  />
+
+        </LinearLayout>
+
+        <!--功能框架-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#FBFBFB"
+            android:orientation="vertical">
+
+            <!--余额组件-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ain_layout_balance"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/aim_qian"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="余额 : ￥"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/aim_tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="200"/>
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="550px"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/aim_into"/>
+
+            </LinearLayout>
+            <!--分割线-->
+            <View
+                android:layout_marginTop="15dp"
+                android:layout_width="420dp"
+                android:layout_height="1px"
+                android:background="#E4E4E4"  />
+
+            <!--数据统计组件-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/aim_data"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="数据统计"/>
+
+
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="600px"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/aim_into"/>
+
+            </LinearLayout>
+            <!--分割线-->
+            <View
+                android:layout_marginTop="15dp"
+                android:layout_width="420dp"
+                android:layout_height="1px"
+                android:background="#E4E4E4"  />
+
+            <!--教务信息组件-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/aim_info"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="教务信息"/>
+
+
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="600px"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/aim_into"/>
+
+            </LinearLayout>
+            <!--分割线-->
+            <View
+                android:layout_marginTop="15dp"
+                android:layout_width="420dp"
+                android:layout_height="1px"
+                android:background="#E4E4E4"  />
+
+            <!--课程评价组件-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/aim_evaluate"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="课程评价"/>
+
+
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="600px"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/aim_into"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--阴影-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.team9.istudy.CustomControl.CustomShadowView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_centerHorizontal="true" />
+
+            <View
+                android:layout_marginTop="20dp"
+                android:layout_width="420dp"
+                android:layout_height="4px"
+                android:background="#E4E4E4"  />
+
+        </LinearLayout>
+
+        <!--功能框架-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#FBFBFB"
+            android:orientation="vertical">
+
+            <!--调查问卷-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/aim_question"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="调查问卷"/>
+
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="600px"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/aim_into"/>
+
+            </LinearLayout>
+            <!--分割线-->
+            <View
+                android:layout_marginTop="15dp"
+                android:layout_width="420dp"
+                android:layout_height="1px"
+                android:background="#E4E4E4"  />
+
+            <!--关于我们-->
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:id="@+id/aim_layout_aboutus"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/aim_about_us"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:text="关于我们"/>
+
+
+
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="600px"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/aim_into"/>
+
+            </LinearLayout>
+            <!--分割线-->
+            <View
+                android:layout_marginTop="15dp"
+                android:layout_width="420dp"
+                android:layout_height="1px"
+                android:background="#E4E4E4"  />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

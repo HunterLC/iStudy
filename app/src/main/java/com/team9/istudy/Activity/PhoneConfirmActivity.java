@@ -43,7 +43,6 @@ public class PhoneConfirmActivity extends AppCompatActivity {
     private Button btn_next;
     private CardView cv_verification;
     EventHandler eventHandler;
-    private boolean flag=true;
     private int time=60;
 
     @Override
@@ -74,16 +73,7 @@ public class PhoneConfirmActivity extends AppCompatActivity {
             int event=msg.arg1;
             int result=msg.arg2;
             Object data=msg.obj;
-            if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
-                if(result == SMSSDK.RESULT_COMPLETE) {
-                    boolean smart = (Boolean)data;
-                    if(smart) {
-                        Toast.makeText(getApplicationContext(),"该手机号已经注册过，请重新输入", Toast.LENGTH_SHORT).show();
-                        phone.requestFocus();
-                        return;
-                    }
-                }
-            }
+
             if(result==SMSSDK.RESULT_COMPLETE)
             {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
@@ -98,23 +88,24 @@ public class PhoneConfirmActivity extends AppCompatActivity {
                     startActivity(intent, aoc.toBundle());
                     finish();
                 }
+                else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
+                        boolean smart = (Boolean)data;
+                        if(smart) {
+                            Toast.makeText(getApplicationContext(),"该手机号已经注册过，请重新输入", Toast.LENGTH_SHORT).show();
+                            phone.requestFocus();
+                            return;
+                        }
+                }
                 else
                 {
                     Toast.makeText(getApplicationContext(),"验证码输入错误", Toast.LENGTH_SHORT).show();
                 }
             }
-//            else
-//            {
-//                if(flag)
-//                {
-//                    Toast.makeText(getApplicationContext(),"验证码获取失败请重新获取", Toast.LENGTH_LONG).show();
-//                    verification.requestFocus();
-//                }
-//                else
-//                {
-//                    Toast.makeText(getApplicationContext(),"验证码输入错误", Toast.LENGTH_LONG).show();
-//                }
-//            }
+            else
+            {
+                    Toast.makeText(getApplicationContext(),"回调失败", Toast.LENGTH_LONG).show();
+                    verification.requestFocus();
+            }
         }
     };
 

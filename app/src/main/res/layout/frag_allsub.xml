@@ -6,19 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/deepskyblue">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="全部课程"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-    </LinearLayout>
-
     <ListView
         android:id="@+id/lv"
         android:layout_width="match_parent"

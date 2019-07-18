@@ -19,6 +19,7 @@ import com.team9.istudy.Model.MySubject;
 import com.team9.istudy.Model.MyWord;
 import com.team9.istudy.Model.Notice;
 import com.team9.istudy.Model.Score;
+import com.team9.istudy.Model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -211,6 +212,32 @@ public class Utility {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static User handleUserResponse(String response){
+        try{
+            /*JSONObject jsonObject = new JSONObject(JSONTokener(response));
+            JSONArray jsonArray = jsonObject.getJSONArray("ScheduleResult");*/
+            JSONObject object = new JSONObject(response);
+            String content = object.toString();
+            return new Gson().fromJson(content,User.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static int handleMoneytResponse(String response){
+        try{
+            /*JSONObject jsonObject = new JSONObject(JSONTokener(response));
+            JSONArray jsonArray = jsonObject.getJSONArray("ScheduleResult");*/
+            JSONObject object = new JSONObject(response);
+            String content = object.toString();
+            return new Gson().fromJson(content,Integer.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 

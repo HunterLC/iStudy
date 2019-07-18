@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="com.team9.Activity.InformationManagementActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.team9.CustomControl.RoundImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logo_login_colorful" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="牛逼哄哄氪金不限量版1.0"
+            android:textSize="20dp"
+            android:textColor="#AF000000"/>
+
+        <TextView
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开发者简介：                                                                                    ">
+
+        </TextView>
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="          我来自河南信阳淮滨县，是流浪歌手。在前几天我遇到了这位朋友，他是在外面纯捡垃圾吃的，我看到心里怪难受，就把他带过来了。我们俩现在就是一对流浪兄弟，我把他带过来，主要是因为我不放心他在外面，怕找不到他，就一块过来了。"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="600px"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/aim_aboutus_payfor_wechat">
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="800px"
+                android:src="@drawable/aim_aboutus_payfor">
+            </ImageView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#AF000000"
+            android:textSize="20dp"
+            android:text="微信支付                          支付宝支付"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="客服热线:"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15708430150"
+                android:textSize="20dp"
+                android:textColor="#228B22"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

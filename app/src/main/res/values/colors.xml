@@ -336,4 +336,5 @@
     <color name="black">#000000</color><!--黑色 -->  
 
     <color name="myclass_background">#11111111</color>
+    <color name="wave_color">#10aa8c</color>
 </resources>

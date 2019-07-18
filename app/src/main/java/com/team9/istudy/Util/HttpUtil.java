@@ -2,6 +2,7 @@ package com.team9.istudy.Util;
 
 import android.util.Log;
 
+import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -116,6 +117,12 @@ public class HttpUtil {
         OkHttpClient client = new OkHttpClient();
         RequestBody requestBody = RequestBody.create(JSON,json);
         Request request = new Request.Builder().url(address).post(requestBody).build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void sendMultipart(String urlAddress, RequestBody requestBody, Callback callback) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().header("Authorization", "Client-ID " + "...").url(urlAddress).post(requestBody).build();
         client.newCall(request).enqueue(callback);
     }
 

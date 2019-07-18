@@ -1,5 +1,6 @@
 package com.team9.istudy.Activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -9,7 +10,9 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.transition.Explode;
@@ -28,6 +31,8 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class LoginActivity extends AppCompatActivity {
     public static SharedPreferences loginSP;//保存登录信息，只能被本应用所访问
@@ -57,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this,stu_main.class));
             finish();
         }
+
+        requestWritePermission();
     }
 
     private void initView() {
@@ -177,5 +184,17 @@ public class LoginActivity extends AppCompatActivity {
         }
         else
             return true;
+    }
+
+    private void requestWritePermission(){
+        if (ActivityCompat.checkSelfPermission(LoginActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(LoginActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
+
     }
 }
