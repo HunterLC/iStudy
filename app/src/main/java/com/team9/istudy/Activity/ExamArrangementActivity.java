@@ -9,7 +9,9 @@ import android.os.Message;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
@@ -39,6 +41,7 @@ public class ExamArrangementActivity extends AppCompatActivity {
     private ListView mListView = null;
     private ExamArrangementAdapter mAdapter = null;
     private List<ExamArrangement> myExams=new ArrayList<>();
+    public Toolbar toolbar;
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -47,11 +50,17 @@ public class ExamArrangementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eaxm_arrangement);
-       /* CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/biaozhunkaitijian.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );*/
+        toolbar = (Toolbar)findViewById(R.id.exam_arrangement_toolbar) ;
+        toolbar.setTitle("考试安排");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+        toolbar.setBackgroundColor(0xFF008577);
+        toolbar.setNavigationIcon(R.drawable.qmui_icon_topbar_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         //设置表格标题的背景颜色
         ViewGroup tableTitle = (ViewGroup) findViewById(R.id.table_title);
         tableTitle.setBackgroundColor(Color.rgb(177, 173, 172));

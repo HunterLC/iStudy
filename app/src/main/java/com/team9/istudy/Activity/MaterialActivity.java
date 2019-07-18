@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -41,6 +42,7 @@ public class MaterialActivity extends AppCompatActivity implements OnChildClickL
     private AlertDialog alertDialog;
     private List<String> typelist=new ArrayList<String>();
     private List<List<Material>> mData = new ArrayList<List<Material>>();
+    private Toolbar toolbar;
     // public static String LOGIN_SUCCESS_TOKEN = null;  //全局使用的token
 
     /*private int[] mDetailIds = new int[]{
@@ -55,16 +57,28 @@ public class MaterialActivity extends AppCompatActivity implements OnChildClickL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_material);
+        toolbar = (Toolbar)findViewById(R.id.material_activity_toolbar);
+        toolbar.setTitle("学习资源");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+        toolbar.setBackgroundColor(0xFF008577);
+        toolbar.setNavigationIcon(R.drawable.qmui_icon_topbar_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         try {
             initData();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        mListView = new ExpandableListView(this);
-        mListView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+        mListView = (ExpandableListView)findViewById(R.id.material_activity_elv);
+        /*mListView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
                 LayoutParams.FILL_PARENT));
-        setContentView(mListView);
+        setContentView(mListView);*/
 
         mListView.setGroupIndicator(getResources().getDrawable(
                 R.drawable.expander_floder));

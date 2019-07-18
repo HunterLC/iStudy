@@ -78,7 +78,7 @@ public class KechengAdapter extends BaseAdapter implements View.OnClickListener 
         switch (view.getId()){
             case R.id.class_righticon:
                 int t = (int)view.getTag(R.id.class_righticon);
-                Toast.makeText(context,"我是按钮" + (t+1),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"敬请期待",Toast.LENGTH_SHORT).show();
                 break;
 
         }

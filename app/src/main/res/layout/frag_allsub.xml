@@ -15,7 +15,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/lightgray"
+        android:background="@color/myclass_background"
         />
     <ExpandableListView
         android:id="@+id/netcourse"
@@ -23,5 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ExpandableListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/myclass_background">
+    </LinearLayout>
 
 </LinearLayout>

@@ -41,19 +41,17 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".Activity.MyScoreActivity"
-            android:label="我的成绩"
-            android:theme="@style/MyAppTheme.NoActionBar" />
+            android:label="我的成绩"/>
         <activity
             android:name=".Activity.MyClassActivity"
             android:theme="@style/AppTheme_Kang" />
         <activity
             android:name=".Activity.MaterialActivity"
             android:label="考试安排"
-            android:theme="@style/AppTheme_Kang" />
+             />
         <activity
             android:name=".Activity.KechengActivity"
-            android:label="我的课程"
-            android:theme="@style/AppTheme_Kang" />
+            android:label="我的课程"/>
         <activity android:name=".Activity.ExamArrangementActivity" />
         <activity
             android:name=".Activity.LoginActivity"

@@ -60,7 +60,7 @@ public class Frag_mysub extends Fragment {
         rightButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"you have clicked Button1",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"敬请期待",Toast.LENGTH_SHORT).show();
             }
         });
         rightButton2.setOnClickListener(new View.OnClickListener() {
@@ -68,27 +68,27 @@ public class Frag_mysub extends Fragment {
             public void onClick(View v) {
 
                 startActivity(intent2);
-                Toast.makeText(getContext(),"you have clicked Button2",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(),"you have clicked Button2",Toast.LENGTH_SHORT).show();
             }
         });
         rightButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(intent3);
-                Toast.makeText(getContext(),"you have clicked Button3",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(),"you have clicked Button3",Toast.LENGTH_SHORT).show();
             }
         });
         rightButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"you have clicked Button4",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"敬请期待",Toast.LENGTH_SHORT).show();
             }
         });
         rightButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(intent5);
-                Toast.makeText(getContext(),"you have clicked Button5",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(),"you have clicked Button5",Toast.LENGTH_SHORT).show();
             }
         });
         return view;

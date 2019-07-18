@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -48,8 +49,16 @@ public class MyScoreActivity extends AppCompatActivity {
         );*/
 
         Toolbar toolbar=findViewById(R.id.score_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("我的成绩");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+        toolbar.setBackgroundColor(0xFF008577);
+        toolbar.setNavigationIcon(R.drawable.qmui_icon_topbar_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         //设置表格标题的背景颜色
         //ViewGroup tableTitle = (ViewGroup) findViewById(R.id.table_title1);
         //tableTitle.setBackgroundColor(Color.rgb(177, 173, 172));

@@ -1,5 +1,7 @@
 package com.team9.istudy.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 import com.team9.istudy.Activity.AboutUs;
 import com.team9.istudy.Activity.Balance;
 import com.team9.istudy.Activity.InformationManagementActivity;
+import com.team9.istudy.Activity.LoginActivity;
 import com.team9.istudy.CustomControl.RoundImageView;
 import com.team9.istudy.Model.User;
 import com.team9.istudy.R;
@@ -48,6 +52,7 @@ public class Frag_account extends Fragment {
     TextView tv_money;
     RoundImageView riv_headIma;
     User user;
+    public Button accountExit;
 
     public static int getMoney() {
         return money;
@@ -68,6 +73,18 @@ public class Frag_account extends Fragment {
         tv_slogan = view.findViewById(R.id.aim_tv_slogan);
         tv_money = view.findViewById(R.id.aim_tv_money);
         riv_headIma = view.findViewById(R.id.aim_head_ima);
+
+        accountExit = view.findViewById(R.id.account_exit);
+        accountExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                sharedPreferences.edit().clear().apply();
+                Intent intentLogin = new Intent(getContext(), LoginActivity.class);
+                startActivity(intentLogin);
+                getActivity().finish();
+            }
+        });
 
 
         initData(view);

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,6 +35,7 @@ public class KechengActivity extends AppCompatActivity {
     //ListView数据源
     private List<Kecheng> data=new ArrayList<>();
     private KechengAdapter adapter=null;
+    public Toolbar toolbar;
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -42,6 +44,17 @@ public class KechengActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class);
+        toolbar = (Toolbar)findViewById(R.id.kecheng_toolbar);
+        toolbar.setTitle("我的课程");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+        toolbar.setBackgroundColor(0xFF008577);
+        toolbar.setNavigationIcon(R.drawable.qmui_icon_topbar_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         /*CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/SIMYOU.TTF")
                 .setFontAttrId(R.attr.fontPath)
@@ -56,7 +69,7 @@ public class KechengActivity extends AppCompatActivity {
         mList.setOnItemClickListener(new ListView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(KechengActivity.this,"我是item点击事件 i = " + i + "l = " + l,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(KechengActivity.this,"我是item点击事件 i = " + i + "l = " + l,Toast.LENGTH_SHORT).show();
             }
         });
     }
