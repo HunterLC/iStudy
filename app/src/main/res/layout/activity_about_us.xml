@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="com.team9.Activity.InformationManagementActivity"
+    tools:context="com.team9.istudy.Activity.InformationManagementActivity"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -16,7 +16,7 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="vertical">
-        <com.team9.CustomControl.RoundImageView
+        <com.team9.istudy.CustomControl.RoundImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"

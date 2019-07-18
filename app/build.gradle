@@ -20,8 +20,8 @@ android {
 apply plugin: 'com.mob.sdk'
 // 在MobSDK的扩展中注册SMSSDK的相关信息
 MobSDK {
-    appKey "2bb5a6104d687"
-    appSecret "1114347872d9db0bf1ac05ca03afa440"
+    appKey "2bc034221066a"
+    appSecret "707a9285d352908976d0a007699eebb0"
 
     SMSSDK {
 //        gui false
