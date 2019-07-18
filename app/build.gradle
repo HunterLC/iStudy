@@ -54,4 +54,5 @@ dependencies {
     implementation 'net.cachapa.expandablelayout:expandablelayout:[2.9.2]'
 
     implementation 'com.squareup.okio:okio:1.7.0'
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 }

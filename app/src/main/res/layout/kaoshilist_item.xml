@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingPrefix">
+    <TextView
+        android:layout_width="1.5dp"
+        android:layout_height="fill_parent"
+        android:background="#B4B3B3"
+        />
+    <TextView
+        android:id="@+id/exam_name"
+        android:layout_width="0dip"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        fontPaths="biaozhunheitijian.ttf"
+        android:paddingBottom="10dip"
+        android:background="@color/colorPrimary"
+        android:paddingTop="10dip"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="考试科目"
+        tools:ignore="MissingPrefix" />
+
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="fill_parent"
+        android:background="#B4B3B3"/>
+
+    <TextView
+        android:id="@+id/exam_time"
+        android:layout_width="0dip"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:paddingBottom="10dip"
+        android:textColor="#ffffff"
+        android:paddingTop="10dip"
+        android:background="@color/colorPrimary"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="考试时间"
+        tools:ignore="MissingPrefix" />
+
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="fill_parent"
+        android:background="#B4B3B3"/>
+
+    <TextView
+        android:id="@+id/exam_place"
+        android:layout_width="0dip"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingBottom="10dip"
+        fontPaths="gtw.ttf"
+        android:paddingTop="10dip"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:singleLine="true"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="考试地点"
+        tools:ignore="MissingPrefix" />
+
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="fill_parent"
+        android:background="#B4B3B3"/>
+</LinearLayout>

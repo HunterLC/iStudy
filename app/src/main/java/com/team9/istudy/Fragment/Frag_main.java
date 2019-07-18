@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.team9.istudy.Activity.EnglishSearchActivity;
+import com.team9.istudy.Activity.MaterialActivity;
 import com.team9.istudy.Activity.ScheduleActivity;
 import com.team9.istudy.Activity.stu_main;
 import com.team9.istudy.Adapter.Image_adapter;
@@ -86,13 +87,13 @@ public class Frag_main extends Fragment {
         stu_main_image_resource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getContext(), MaterialActivity.class));
             }
         });
         stu_main_resource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getContext(), MaterialActivity.class));
             }
         });
 

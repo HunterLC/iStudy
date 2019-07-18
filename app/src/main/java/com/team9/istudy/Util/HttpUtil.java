@@ -112,4 +112,11 @@ public class HttpUtil {
         client.newCall(request).enqueue(callback);
     }
 
+    public static void sendOkHttpRequestkang(String address, String json, okhttp3.Callback callback){
+        OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody = RequestBody.create(JSON,json);
+        Request request = new Request.Builder().url(address).post(requestBody).build();
+        client.newCall(request).enqueue(callback);
+    }
+
 }

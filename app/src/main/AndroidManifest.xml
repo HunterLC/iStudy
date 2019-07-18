@@ -15,41 +15,56 @@
         android:theme="@style/MyAppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Activity.MyScoreActivity"
+                  android:theme="@style/MyAppTheme.NoActionBar"
+                  android:label="我的成绩">
+
+        </activity>
+        <activity android:name=".Activity.MyClassActivity"
+                  android:theme="@style/AppTheme_Kang"/>
+        <activity android:name=".Activity.MaterialActivity"
+                  android:label="考试安排"
+                  android:theme="@style/AppTheme_Kang"/>
+        <activity android:name=".Activity.KechengActivity"
+                  android:label="我的课程"
+                  android:theme="@style/AppTheme_Kang"/>
+        <activity android:name=".Activity.ExamArrangementActivity" />
         <activity
             android:name=".Activity.LoginActivity"
-            android:theme="@style/LaunchScreen"
-            >
+            android:theme="@style/LaunchScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Activity.TuijianActivity"
-                  android:theme="@style/AppTheme_CUI">
-
-        </activity>
-        <activity android:name=".Activity.RegisterActivity"
-                  android:theme="@style/Translucent"/>
-        <activity android:name=".Activity.PhoneConfirmActivity"
-                  android:theme="@style/Translucent"/>
-        <activity android:name=".Activity.stu_main"
-                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-                  />
-        <activity android:name=".Activity.JingpincourseActivity"
-                  android:theme="@style/AppTheme_CUI"/>
-        <activity android:name=".Activity.FreecourseActivity"
-                  android:theme="@style/AppTheme_CUI"
-            />
-        <activity android:name=".Activity.AllcourseActivity"
-                  android:theme="@style/AppTheme_CUI"/>
-        <activity android:name=".Activity.ScheduleActivity"
-                  android:theme="@style/MyAppTheme"/>
+        <activity
+            android:name=".Activity.TuijianActivity"
+            android:theme="@style/AppTheme_CUI" />
+        <activity
+            android:name=".Activity.RegisterActivity"
+            android:theme="@style/Translucent" />
+        <activity
+            android:name=".Activity.PhoneConfirmActivity"
+            android:theme="@style/Translucent" />
+        <activity
+            android:name=".Activity.stu_main"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Activity.JingpincourseActivity"
+            android:theme="@style/AppTheme_CUI" />
+        <activity
+            android:name=".Activity.FreecourseActivity"
+            android:theme="@style/AppTheme_CUI" />
+        <activity
+            android:name=".Activity.AllcourseActivity"
+            android:theme="@style/AppTheme_CUI" />
+        <activity
+            android:name=".Activity.ScheduleActivity"
+            android:theme="@style/MyAppTheme" />
         <activity android:name=".Activity.EnglishCET6Activity" />
         <activity android:name=".Activity.EnglishSearchActivity" />
         <activity android:name=".Activity.EnglishCET4Activity" />
-
     </application>
 
 </manifest>

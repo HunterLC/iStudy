@@ -7,4 +7,6 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="fab_size_normal">100dp</dimen>
     <dimen name="text_size">12sp</dimen>
+    <dimen name="min_Height">64dip</dimen>
+    <dimen name="image_width">60dip</dimen>
 </resources>
