@@ -82,7 +82,7 @@ public class HttpUtil {
         RequestBody requestBody = new FormBody.Builder()
                 .add("username",username)
                 .add("pswd",password)
-                .add("ID",id)
+                .add("studentnumber",id)
                 .add("nickname",nickname)
                 .add("e_mail",email)
                 .add("gender",gender)

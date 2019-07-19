@@ -209,6 +209,8 @@ public class InformationManagementActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void initWindow() {//初始化，将状态栏和标题栏设为透明
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

@@ -160,7 +160,7 @@ public class RegisterActivity extends AppCompatActivity {
         String rp_pswd=repeat_password.getText().toString();
         String id=ID.getText().toString();
         String registerURL="http://192.168.43.212:8080/maven-ssm-web/personController/addstudent";
-        HttpUtil.sendOkHttpRequest(registerURL,username, nick,id,em, se, ide, pswd, new Callback() {
+        HttpUtil.sendOkHttpRequest(registerURL,username, id,nick,em, se, ide, pswd, new Callback() {
             @Override
             public void onFailure( Call call,  IOException e) {
                 runOnUiThread(new Runnable() {
