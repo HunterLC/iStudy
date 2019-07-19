@@ -92,8 +92,11 @@ public class Frag_account extends Fragment {
     }
 
     private void initData(View view) {
-        if(signAccount == null)
-            signAccount = "15520715516";
+        if(signAccount == null){
+            SharedPreferences loginSP = getActivity().getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+            signAccount = loginSP.getString("account",null);
+        }
+
         String getEnglishListURL = "http://192.168.43.212:8080/maven-ssm-web/infoController/getMoney?" + "username=" + signAccount;
         HttpUtil.sendOkHttpRequest(getEnglishListURL, new Callback() {
             @Override

@@ -1,6 +1,8 @@
 package com.team9.istudy.Activity;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -79,7 +81,8 @@ public class KechengActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(1000);
-                    String json = "15520715516";
+                    SharedPreferences loginSP = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                    String json = loginSP.getString("account",null);
                     String getMaterialUrl = "http://192.168.43.212:8080/maven-ssm-web/personController/getMyClass";//个人考试安排api
                     //String getCourseScheduleUrl = "https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=18883892238";
                     HttpUtil.sendOKHttpRequest1(getMaterialUrl, json, new Callback() {

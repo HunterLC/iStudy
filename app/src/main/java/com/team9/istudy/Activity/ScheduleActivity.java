@@ -1,7 +1,9 @@
 package com.team9.istudy.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
@@ -132,7 +134,8 @@ public class ScheduleActivity extends AppCompatActivity  implements View.OnClick
             public void run() {
                 try {
                     Thread.sleep(1000);
-                    String getCourseScheduleUrl = "http://192.168.43.212:8080/maven-ssm-web/infoController/getSchedule?username=15520715516";//查询课表api
+                    SharedPreferences loginSP = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+                    String getCourseScheduleUrl = "http://192.168.43.212:8080/maven-ssm-web/infoController/getSchedule?username="+loginSP.getString("account",null);//查询课表api
                     HttpUtil.sendOkHttpRequest(getCourseScheduleUrl,new Callback() {
                         //链接失败
                         @Override

@@ -2,6 +2,7 @@ package com.team9.istudy.Activity;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -215,7 +216,8 @@ public class InformationManagementActivity extends AppCompatActivity {
         }
 
 
-        UserName = "15520715516";
+        SharedPreferences loginSP = getSharedPreferences("loginInfo", Context.MODE_PRIVATE);
+        UserName = loginSP.getString("account",null);
         //数据初始化
         ///storage/emulated/0/DCIM/Camera/IMG_20190709_151159.jpg
         //Uri initUri =  Uri.parse("content://com.miui.gallery.open/raw/%2Fstorage%2Femulated%2F0%2FDCIM%2FCamera%2FIMG_20190702_014838.jpg");

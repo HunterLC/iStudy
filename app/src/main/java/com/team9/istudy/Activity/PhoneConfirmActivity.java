@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.team9.istudy.R;
 import com.team9.istudy.Util.CountDownTimerUtil;
+import com.team9.istudy.Util.RandomUtil;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
@@ -44,6 +45,7 @@ public class PhoneConfirmActivity extends AppCompatActivity {
     private CardView cv_verification;
     EventHandler eventHandler;
     private int time=60;
+    public static String RANDOM_CODE = null;//随机验证码
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class PhoneConfirmActivity extends AppCompatActivity {
         ShowEnterAnimation();
         initView();
         setListener();
-        eventHandler=new EventHandler(){
+        /*eventHandler=new EventHandler(){
             public void afterEvent(int event, int result, Object data) {
                 Message msg=new Message();
                 msg.arg1=event;
@@ -62,7 +64,7 @@ public class PhoneConfirmActivity extends AppCompatActivity {
             }
         };
 
-        SMSSDK.registerEventHandler(eventHandler);
+        SMSSDK.registerEventHandler(eventHandler);*/
     }
 
     Handler handler=new Handler()
@@ -127,10 +129,13 @@ public class PhoneConfirmActivity extends AppCompatActivity {
             public void onClick(View view) {
                 phonenum=phone.getText().toString();
                 if(judgePhone()){
-                    SMSSDK.getVerificationCode("86",phonenum);//获取验证码
+                    //SMSSDK.getVerificationCode("86",phonenum);// 获取验证码
                     verification.requestFocus();
                     CountDownTimerUtil cdtu=new CountDownTimerUtil(btn_verification,60000,1000);
                     cdtu.start();
+                    // 获取验证码
+                    RANDOM_CODE = RandomUtil.getRandomString();
+                    Toast.makeText(PhoneConfirmActivity.this,"你的验证码是："+RANDOM_CODE,Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -139,7 +144,23 @@ public class PhoneConfirmActivity extends AppCompatActivity {
             public void onClick(View view) {
                 code=verification.getText().toString();
                 if(judgeCode()){
-                    SMSSDK.submitVerificationCode("86",phonenum,code);//验证码是否正确
+                    //SMSSDK.submitVerificationCode("86",phonenum,code);//验证码是否正确
+
+                    //验证验证码是否正确
+                    if(code.equals(RANDOM_CODE)){ //验证成功
+                        Explode explode = new Explode();
+                        explode.setDuration(500);
+                        getWindow().setExitTransition(explode);
+                        getWindow().setEnterTransition(explode);
+                        ActivityOptionsCompat aoc = ActivityOptionsCompat.makeSceneTransitionAnimation(PhoneConfirmActivity.this);
+                        Intent intent = new Intent(PhoneConfirmActivity.this, RegisterActivity.class);
+                        intent.putExtra("username", phone.getText().toString());
+                        startActivity(intent, aoc.toBundle());
+                        finish();
+
+                    }else{//验证失败
+                        Toast.makeText(getApplicationContext(),"验证码输入错误", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
